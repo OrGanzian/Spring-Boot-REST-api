@@ -1,12 +1,23 @@
 package com.organ.repository;
 
-public interface ObjectRepository<T> {
+import com.organ.model.Player;
 
-    public void store(T t);
+import java.util.List;
 
-    public T retrieve(String name);
+/**
+ *
+ * @param <T> The type of the main Object
+ * @param <S> Type of the ID to detect an uniq record
+ */
+public interface ObjectRepository<T,S> {
 
-    public T search(String name);
+    public T store(T t);
 
-    public T delete(String name);
+    public T retrieveById(S name);
+
+    public T search(S name);
+
+    public T delete(S name);
+
+    public List<T> getAll();
 }

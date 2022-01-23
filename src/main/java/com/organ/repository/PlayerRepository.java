@@ -3,11 +3,10 @@ package com.organ.repository;
 import com.organ.model.Player;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Repository
-public class PlayerRepository implements ObjectRepository<Player> {
+public class PlayerRepository implements ObjectRepository<Player,String> {
 
 
     private Map<String,Player> map;
@@ -21,12 +20,15 @@ public class PlayerRepository implements ObjectRepository<Player> {
     }
 
     @Override
-    public void store(Player player) {
-
+    public Player store(Player player) {
+        this.map.put(player.getLastName(), player);
+        return player;
     }
 
+
+
     @Override
-    public Player retrieve(String name) {
+    public Player retrieveById(String name) {
         return this.map.get(name);
     }
 
@@ -38,6 +40,11 @@ public class PlayerRepository implements ObjectRepository<Player> {
     @Override
     public Player delete(String name) {
         return null;
+    }
+
+    @Override
+    public List<Player> getAll() {
+        return new ArrayList<Player>(map.values());
     }
 
 

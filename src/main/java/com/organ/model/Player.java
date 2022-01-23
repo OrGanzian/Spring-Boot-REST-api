@@ -5,6 +5,9 @@ public class Player {
 
     private String lastName;
 
+    public Player() {
+    }
+
     public String getLastName() {
         return lastName;
     }
