@@ -26,4 +26,14 @@ public class PlayerService {
     }
 
 
+    public Player editPlayer(String playerId, Player newPlayerInput) {
+        Player playerToChange = this.playerRepository.retrieveById(playerId);
+        playerToChange=newPlayerInput;
+        return newPlayerInput;
+    }
+
+    public String deletePlayer(String playerToDelete) {
+        return this.playerRepository.delete(playerToDelete);
+
+    }
 }

@@ -32,14 +32,13 @@ public class PlayerRepository implements ObjectRepository<Player,String> {
         return this.map.get(name);
     }
 
-    @Override
-    public Player search(String name) {
-        return null;
-    }
+
+
 
     @Override
-    public Player delete(String name) {
-        return null;
+    public String delete(String playerToDelete) {
+        this.map.remove(playerToDelete);
+        return "player deleted";
     }
 
     @Override

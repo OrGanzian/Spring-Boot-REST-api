@@ -15,9 +15,7 @@ public interface ObjectRepository<T,S> {
 
     public T retrieveById(S name);
 
-    public T search(S name);
-
-    public T delete(S name);
+    public S delete(S name);
 
     public List<T> getAll();
 }

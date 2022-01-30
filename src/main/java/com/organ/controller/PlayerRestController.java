@@ -18,8 +18,8 @@ public class PlayerRestController {
 
 
     @GetMapping("/players/{firstName}")
-    public String getPlayerInfo(@PathVariable("firstName") String firstName) {
-        return playerService.getPlayerByName(firstName).getLastName();
+    public Player getPlayerInfo(@PathVariable("firstName") String firstName) {
+        return playerService.getPlayerByName(firstName);
     }
 
     @RequestMapping("/players")
@@ -40,26 +40,18 @@ public class PlayerRestController {
     // PUT
 
 
-    //    @RequestMapping("/results")
-//    public List<Result> getAllResult() {
-//        List<Result> resultsToReturn = new ArrayList<>();
-//        resultsToReturn.add(new Result(1));
-//        resultsToReturn.add(new Result(5));
-//        resultsToReturn.add(new Result(8));
-//        return resultsToReturn;
-//    }
+    @PostMapping("/players/{lastName}")
+    public Player editPlayer(@RequestBody Player playerInput,@PathVariable String lastName) {
+        return playerService.editPlayer(lastName, playerInput);
+    }
 
 
     // DELETE
 
-//    @RequestMapping("/results")
-//    public List<Result> getAllResult() {
-//        List<Result> resultsToReturn = new ArrayList<>();
-//        resultsToReturn.add(new Result(1));
-//        resultsToReturn.add(new Result(5));
-//        resultsToReturn.add(new Result(8));
-//        return resultsToReturn;
-//    }
+    @DeleteMapping("/players/{lastName}")
+    public String deletePlayer(@PathVariable("lastName") String playerNameToDelete) {
+        return playerService.deletePlayer(playerNameToDelete);
+    }
 
 
 }
