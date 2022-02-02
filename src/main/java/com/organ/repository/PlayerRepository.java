@@ -19,11 +19,20 @@ public class PlayerRepository implements ObjectRepository<Player,String> {
         map.put("toni",new Player("kroos"));
     }
 
+/*
     @Override
     public Player store(Player player) {
         this.map.put(player.getLastName(), player);
         return player;
     }
+*/
+@Override
+public Player store(Player player) {
+    System.out.println(player.getLastName());
+    this.map.put(player.getLastName(), player);
+    return player;
+}
+
 
 
 
